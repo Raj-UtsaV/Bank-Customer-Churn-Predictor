@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bank Customer Churn Prediction</h1>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="geography">Geography:</label>
+                <select name="geography" required>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" name="age" min="18" max="92" required>
+            </div>
+
+            <div class="form-group">
+                <label for="balance">Balance:</label>
+                <input type="number" name="balance" required>
+            </div>
+
+            <div class="form-group">
+                <label for="credit_score">Credit Score:</label>
+                <input type="number" name="credit_score" required>
+            </div>
+
+            <div class="form-group">
+                <label for="estimated_salary">Estimated Salary:</label>
+                <input type="number" name="estimated_salary" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tenure">Tenure:</label>
+                <input type="number" name="tenure" min="0" max="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="num_of_products">Number of Products:</label>
+                <input type="number" name="num_of_products" min="1" max="4" required>
+            </div>
+
+            <div class="form-group">
+                <label for="has_cr_card">Has Credit Card:</label>
+                <select name="has_cr_card" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="is_active_member">Is Active Member:</label>
+                <select name="is_active_member" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if churn_probability %}
+            <h2>Churn Probability: {{ churn_probability }}</h2>
+            <h3>{{ result }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
